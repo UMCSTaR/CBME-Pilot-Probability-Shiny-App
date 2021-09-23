@@ -36,3 +36,5 @@ vignettes/*.pdf
 *.knit.md
 
 .DS_Store
+
+CBME_predicted_readiness/data/20210921_shiny_data.csv
