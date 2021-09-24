@@ -69,7 +69,7 @@ prob_plot <-
         color = deep_red
       ) +
       scale_y_continuous(labels = scales::percent_format(accuracy = 1), limits = c(0,1)) +
-      scale_x_continuous(breaks = seq(0, 75, 5)) +
+      scale_x_continuous(breaks = c(0, n_eval_pr_value)) +
       labs(y = "Probabilty", x = "Practice Ready Evaluations") +
       theme_classic() +
       theme(plot.title = element_text(size=20),
