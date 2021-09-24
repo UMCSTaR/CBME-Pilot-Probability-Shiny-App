@@ -7,16 +7,14 @@ shinyServer(function(input, output) {
     # import plot
     source("ggplot_scrap.R")
     
-    #Import Data
-    main_dt <- data.table::fread("data/20210921_shiny_data.csv", nrows = 1000)
-
     output$probablity_plot <- renderPlot({
         
         prob_plot(main_dt_path = "data/20210921_shiny_data.csv",
                   select_proc = {input$select_proc},
                   select_month = {input$select_month},
                   select_pgy = {input$select_PGY},
-                  n_eval_pr_value = {input$n_eval_pr})
+                  n_eval_pr_value = {input$n_eval_pr},
+                  ci = {input$ci_yes_no})
         
     })
     
