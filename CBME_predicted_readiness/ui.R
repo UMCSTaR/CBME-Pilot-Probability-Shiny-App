@@ -56,31 +56,31 @@ shinyUI(
                 )
             ),
             
+            "Hover over the plot on the right to see more information"
             
-            # n eval for practice ready
-            sliderInput(
-                "n_eval_pr",
-                h4("Number of Practice Ready Evaluations:"),
-                min = 0,
-                max = 75,
-                value = 75
-            ),
             
-            # confidence interval
-            materialSwitch(
-                inputId = "ci_yes_no",
-                label = h4("Confidence Interval"),
-                value = FALSE, 
-                status = "info"
-            )
+            # # n eval for practice ready
+            # sliderInput(
+            #     "n_eval_pr",
+            #     h4("Number of Practice Ready Evaluations:"),
+            #     min = 0,
+            #     max = 75,
+            #     value = 75
+            # ),
+            # 
+            # # confidence interval
+            # materialSwitch(
+            #     inputId = "ci_yes_no",
+            #     label = h4("Confidence Interval"),
+            #     value = FALSE, 
+            #     status = "info"
+            # )
         ),
     
     mainPanel(
-        # verbatimTextOutput("pgy_value"),
-        # verbatimTextOutput("proc_value"),
-        # verbatimTextOutput("month_value"),
-        # verbatimTextOutput("n_eval_pr_value"),
+
         # Output: plot ----
-        plotOutput(outputId = "probablity_plot")
+        # plotOutput(outputId = "probablity_plot")
+        highchartOutput(outputId = "probablity_plot")
     ))
 ))
