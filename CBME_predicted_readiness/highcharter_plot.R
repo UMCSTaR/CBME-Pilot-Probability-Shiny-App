@@ -47,8 +47,10 @@ hc_prob_plot <-
                hcaes(x = priorPR,
                      y = Estimate_perc),
            color = dark_blue,
-           name = "Estimate",
-           marker = FALSE
+           name = "Estimate"
+           # enabledThreshold = 5
+           
+           # marker = FALSE
     ) %>% 
     hc_add_series(
       proc_pgy_month_dt,
@@ -82,7 +84,7 @@ hc_prob_plot <-
                              )),
                labels = list(style = list(
                                fontSize = '1.4em'   # 1.4 x tthe size of the default text
-                             ))) %>%
+                             ))) %>% 
       hc_tooltip(
         backgroundColor = simpl_blue,
         # shared = TRUE,
@@ -97,11 +99,24 @@ hc_prob_plot <-
       }
 
       "
-        ) 
-      ) 
+        )
+      ) %>% 
+      hc_plotOptions(
+        line = list(
+          marker = list(
+            fillColor = deep_red,
+            lineWidth = 4,
+            lineColor = deep_red,
+            enabledThreshold = 50
+            
+          )
+        )
+      )
+
+    
   }
 
-# # debug inputs
+# debug inputs
 # hc_prob_plot(
 #   select_proc = unique(main_dt$procName)[1],
 #   select_pgy = 3,
