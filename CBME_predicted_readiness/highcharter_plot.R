@@ -58,7 +58,7 @@ hc_prob_plot <-
       linkedTo = "Estimate", # here we link the legends in one.
       showInLegend = TRUE,
       # color = hex_to_rgba("red", 0.1),  # put a semi transparent color,
-      color = hex_to_rgba("gray70"),
+      color = hex_to_rgba("gray90"),
       marker = FALSE,
       zIndex = -3 # this is for put the series in a back so the points are showed first
     ) %>% 
@@ -66,7 +66,7 @@ hc_prob_plot <-
                min = 0,
                title = list(text = "Probability",
                             style = list(
-                              fontWeight = "bold",   # Bold
+                              # fontWeight = "bold",   # Bold
                               fontSize = '2.0em'   # 1.4 x tthe size of the default text
                             )),
                labels = list(format = "{value}%",
@@ -77,7 +77,7 @@ hc_prob_plot <-
                tickInterval = 5,
                 title = list(text = "Practice Ready Evaluations",
                              style = list(
-                               fontWeight = "bold",   # Bold
+                               # fontWeight = "bold",   # Bold
                                fontSize = '2.0em'   # 1.4 x tthe size of the default text
                              )),
                labels = list(style = list(
