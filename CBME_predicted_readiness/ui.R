@@ -75,7 +75,7 @@ shinyUI(
             # confidence interval
             materialSwitch(
                 inputId = "line_90perc",
-                label = h4("90% probability line"),
+                label = "90% probability line",
                 value = FALSE,
                 status = "info"
             )

@@ -5,9 +5,9 @@ account: xilin-chen-shiny
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 4752291
-bundleId: 5081666
+bundleId: 5081678
 url: https://xilin-chen-shiny.shinyapps.io/CBME_predicted_readiness_test/
-when: 1632850363.56124
-lastSyncTime: 1632850363.56125
+when: 1632850614.73452
+lastSyncTime: 1632850614.73453
 asMultiple: FALSE
 asStatic: FALSE
