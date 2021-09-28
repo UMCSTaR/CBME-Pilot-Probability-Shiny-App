@@ -5,17 +5,19 @@ library(tidyverse)
 shinyServer(function(input, output) {
     
     # import plot
-    # source("ggplot_scrap.R")
-    source("highcharter_plot.R")
+    source("ggplot_scrap.R")
+    # source("highcharter_plot.R")
     
-    output$probablity_plot <- renderHighchart({
+    # output$probablity_plot <- renderHighchart({
+    output$probablity_plot <- renderPlot({
         
-        hc_prob_plot(main_dt_path = "data/20210921_shiny_data.csv",
+        # hc_prob_plot(main_dt_path = "data/20210921_shiny_data.csv",
+        prob_plot(main_dt_path = "data/20210921_shiny_data.csv",
                   select_proc = {input$select_proc},
                   select_month = {input$select_month},
-                  select_pgy = {input$select_PGY})
-                  # n_eval_pr_value = {input$n_eval_pr},
-                  # ci = {input$ci_yes_no})
+                  select_pgy = {input$select_PGY},
+                  n_eval_pr_value = {input$n_eval_pr},
+                  line_90perc = {input$line_90perc})
         
     })
     

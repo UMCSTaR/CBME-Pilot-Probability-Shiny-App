@@ -2,6 +2,7 @@ library(shiny)
 library(shinyWidgets)
 library(highcharter)
 
+
 # Define UI for application that draws a histogram
 shinyUI(
     # load procedure list dt
@@ -26,6 +27,8 @@ shinyUI(
                     "PGY5" = 5
                 ),
                 selected = 1
+                # choicesOpt = list(
+                #     style = rep(("color: black; background: lightgrey; font-weight: bold;"),10))
             ),
             # allow typing guide select
             pickerInput(
@@ -57,31 +60,32 @@ shinyUI(
                 )
             ),
             
-            "Hover over the plot on the right to see more information"
+            # "Hover over the plot on the right to see more information"
             
             
-            # # n eval for practice ready
-            # sliderInput(
-            #     "n_eval_pr",
-            #     h4("Number of Practice Ready Evaluations:"),
-            #     min = 0,
-            #     max = 75,
-            #     value = 75
-            # ),
-            # 
-            # # confidence interval
-            # materialSwitch(
-            #     inputId = "ci_yes_no",
-            #     label = h4("Confidence Interval"),
-            #     value = FALSE, 
-            #     status = "info"
-            # )
+            # n eval for practice ready
+            sliderInput(
+                "n_eval_pr",
+                h4("Inputs for Practice Ready:"),
+                min = 0,
+                max = 75,
+                value = 75
+            ),
+
+            # confidence interval
+            materialSwitch(
+                inputId = "line_90perc",
+                label = h4("90% probability line"),
+                value = FALSE,
+                status = "info"
+            )
         ),
     
     mainPanel(
 
         # Output: plot ----
-        # plotOutput(outputId = "probablity_plot")
-        highchartOutput(outputId = "probablity_plot")
+        plotOutput(outputId = "probablity_plot"),
+        # highchartOutput(outputId = "probablity_plot")
+        h4("Estimate and CI")
     ))
 ))

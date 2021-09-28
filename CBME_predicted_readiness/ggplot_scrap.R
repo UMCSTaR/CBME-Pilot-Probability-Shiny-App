@@ -30,7 +30,7 @@ prob_plot <-
            select_pgy,
            select_month,
            n_eval_pr_value,
-           ci = TRUE) {
+           line_90perc = FALSE) {
     main_dt <- data.table::fread(main_dt_path)
 
     proc_pgy_month_dt = main_dt %>%
@@ -41,25 +41,17 @@ prob_plot <-
       )
     # priorPR == 74)
     
-    if (ci){
-      p = ggplot(data = proc_pgy_month_dt,
-                 aes(x = priorPR,
-                     y = Estimate)) +
-        geom_ribbon(aes(
-          ymin = Q10,
-          ymax = Q90,
-          fill = traineePGY
-        ), fill = lighter_gray,
-        show.legend = F) +
-        geom_line(color = black, show.legend = F, size = 1) 
-    } else {
-      p = ggplot(data = proc_pgy_month_dt,
-                 aes(x = priorPR,
-                     y = Estimate)) +
-        geom_line(color = black, show.legend = F, size = 1) 
-    }
     
-    p +
+    p = ggplot(data = proc_pgy_month_dt,
+           aes(x = priorPR,
+               y = Estimate))  +
+      geom_ribbon(aes(
+        ymin = Q10,
+        ymax = Q90,
+        fill = traineePGY
+      ), fill = lighter_gray,
+      show.legend = F) +
+      geom_line(color = black, show.legend = F, size = 1) +
       geom_point(
         aes(
           x = n_eval_pr_value,
@@ -70,17 +62,29 @@ prob_plot <-
       ) +
       scale_y_continuous(labels = scales::percent_format(accuracy = 1), limits = c(0,1)) +
       scale_x_continuous(breaks = c(0, n_eval_pr_value, 75)) +
-      labs(y = "Probabilty", x = "Practice Ready Evaluations") +
+      labs(y = "Probabilty \nof Practice Readiness",
+           x = "Practice Ready Evaluations") +
       theme_classic() +
       theme(plot.title = element_text(size=20),
             axis.text = element_text(size = 20),
             # axis.text.x = element_blank(),
             # axis.ticks.x = element_blank(),
-            axis.title = element_text(size = 25),
+            axis.title = element_text(size = 22),
+            axis.title.y = element_text(angle = 0, vjust = 0.5),
             # axis.ticks.y=element_blank(),
             legend.position="bottom",
             legend.title = element_blank())
+    
+    
+    if (line_90perc){
+      p +
+        geom_hline(yintercept = 0.9, color = "gray50", linetype = 2) +
+        scale_y_continuous(labels = scales::percent_format(accuracy = 1), limits = c(0,1),
+                           breaks = c(0, 0.25, 0.5, 0.75, 0.9, 1)) 
+    } else {
+      p 
+    }
   }
 
 # debug inputs
-# prob_plot(select_proc = unique(main_dt$procName)[1],select_pgy = 3,select_month = "July", n_eval_pr_value = 75)
+# prob_plot(select_proc = unique(main_dt$procName)[1],select_pgy = 3,select_month = "July", n_eval_pr_value = 75, line_90perc = TRUE)

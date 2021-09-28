@@ -77,7 +77,7 @@ hc_prob_plot <-
                              )))  %>%
       hc_xAxis(max = 75,
                tickInterval = 5,
-                title = list(text = "Practice Ready Evaluations",
+              title = list(text = "Practice Ready Evaluations",
                              style = list(
                                # fontWeight = "bold",   # Bold
                                fontSize = '2.0em'   # 1.4 x tthe size of the default text
@@ -85,6 +85,12 @@ hc_prob_plot <-
                labels = list(style = list(
                                fontSize = '1.4em'   # 1.4 x tthe size of the default text
                              ))) %>% 
+      hc_caption(text = "Estimate and CI",
+                style = list(useHTML = TRUE,
+                             fontWeight = "bold",
+                             # color = "black",
+                             fontSize = '1.4em')
+      ) %>% 
       hc_tooltip(
         backgroundColor = simpl_blue,
         # shared = TRUE,
